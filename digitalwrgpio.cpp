@@ -8,7 +8,7 @@ ClaseGPIO::ClaseGPIO()
 void ClaseGPIO::preguntapin()
 {
 	cout << "Por favor ingrese el pin : " <<endl;
-  cin >> pin;
+  	cin >> pin;
 }
 
 void ClaseGPIO::direccion()
@@ -23,7 +23,7 @@ void ClaseGPIO::crear_export()
 {
 	if ((DigitalrwHandle = fopen(PinExport, "r+")) != NULL)
 	{
-		fwrite(PIN,sizeof(char),2,DigitalrwHandle);
+		fwrite(&PIN,sizeof(char),sizeof(PIN),DigitalrwHandle);
 		fclose(DigitalrwHandle);
 	}
 }
@@ -71,7 +71,7 @@ void ClaseGPIO::leerpin()
 	if ((DigitalrwHandle = fopen(PinValue, "w+")) != NULL)
 	{
 		strcat(InPin, PinValue);
-		fwrite(InPin,sizeof(char),32,DigitalrwHandle);
+		fwrite(&InPin,sizeof(char),sizeof(InPin),DigitalrwHandle);
 		fclose(DigitalrwHandle);
 	}
 }
@@ -80,7 +80,7 @@ void ClaseGPIO::borrar_export()
 {
 	if ((DigitalrwHandle = fopen(PinUnexport, "r+")) != NULL)
 	{
-		fwrite(PIN,sizeof(char),2,DigitalrwHandle);
+		fwrite(&PIN,sizeof(char),sizeof(PIN),DigitalrwHandle);
 		fclose(DigitalrwHandle);
 	}
 }

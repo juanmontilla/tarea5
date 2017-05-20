@@ -12,7 +12,6 @@ int main()
 {
 	cout << "CONFIGURACION PINES GPIO" << endl;
 	string tipo;
-
 	pinesGPIO.preguntapin();
 	pinesGPIO.direccion();
 	pinesGPIO.crear_export();
@@ -27,8 +26,13 @@ int main()
 	else if(tipo=="out")
 		{
 			pinesGPIO.setpinout();
-			pinesGPIO.escribirpinH();
-			pinesGPIO.escribirpinL();
+			for(int i=0; i<10; i++)
+			{
+				pinesGPIO.escribirpinH();
+				usleep(1000000);
+				pinesGPIO.escribirpinL();
+				usleep(1000000);
+			}
 		}
 	else
 		{
